@@ -1,0 +1,47 @@
+// # Variables
+// ## Colors
+// ### App
+$color-white: #FFFFFF
+$color-blue: #0058AB
+$color-yellow: #ffcc00
+
+// ### Text
+$color-text-primary: #111
+$color-text-secondary: #484848
+$color-text-tertiary: #0077c1
+
+// # Fonts
+$font-headings: "Delivery", Tahoma, Geneva, sans-serif
+$font-text: "Noto IKEA","Noto Sans","Roboto","Open Sans",-apple-system,sans-serif !important
+
+// # Spacing
+$space-big: 22px
+$space-medium: 14px
+$space-small: 8px
+
+// # Media queries  
+$media-small-mobile: 320px
+$media-larger-mobile: 400px
+$media-larger-phablet: 550px
+$media-larger-tablet: 750px
+$media-larger-desktop: 1000px
+
+// # Border radius
+$radius: 8px
+
+// # Mixings
+@mixin content-box
+  margin-bottom: $space-medium
+  padding: $space-medium
+  background-color: white
+  color: $color-text-primary
+  border-radius: $radius
+
+@mixin page-template
+  max-width: 960px
+  margin: 0 auto
+  padding: $space-medium
+  padding-bottom: 36px
+
+  header
+    margin-bottom: $space-medium
