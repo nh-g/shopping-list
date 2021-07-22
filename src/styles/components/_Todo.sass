@@ -1,0 +1,44 @@
+.todo-app 
+  display: flex
+  flex-direction: column
+  justify-content: start
+  width: 520px
+  min-height: 600px
+  background: $color-white
+  text-align: center
+  margin: 0 auto
+  border-radius: 10px
+  padding-bottom: 32px
+
+.todo-row 
+  display: flex
+  justify-content: space-between
+  align-items: center
+  color: $color-text-primary
+  padding: 16px
+  border-bottom: 1px solid #D9D9D9
+  width: 100%
+
+
+.complete
+    background: #f0f0f0
+    text-decoration: line-through
+
+.input 
+    display: block
+    appearance: none
+    width: 85%
+    padding: .5rem 3.375rem
+    font-size: 16px
+    line-height: 1.5
+    background-color: #f0f0f0
+    border: 2px solid transparent
+    border-radius: 50em
+    outline: 0
+    box-shadow: none
+    transition: background-color .2s
+    margin-bottom: 30px
+
+.input.edit
+    border: 2px solid $color-blue
+    background-color: $color-white
