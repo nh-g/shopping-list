@@ -1,23 +1,25 @@
 import React, {useState, useEffect} from 'react'
-import Todo from './Item'
-import TodoForm from './ItemForm'
+import Item from './Item'
+import ItemForm from './ItemForm'
 
-export default function TodoList() {
+export default function ItemList() {
     const [todos, setTodos] = useState([])
 
 
     const addTodo = todo => {
         // Type-in verification
-        if (!todo.text || /^\s*$/.test(todo.text)) {
+        if (!todo.title || /^\s*$/.test(todo.title)) {
             return
         }
         const newTodos = [todo, ...todos]
         setTodos(newTodos)
+
+        console.log("Todos", todos)
     }
     
     const updateTodo = (todoId, newValue) => {
       // Type-in verification
-        if (!newValue.text || /^\s*$/.test(newValue.text)) {
+        if (!newValue.title || /^\s*$/.test(newValue.title)) {
           return;
         }
         setTodos(prev => prev.map((todo) => (todo.id === todoId? newValue : todo )))
@@ -66,8 +68,8 @@ export default function TodoList() {
 
     return (
       <div>
-        <TodoForm onSubmit={addTodo} />
-        <Todo
+        <ItemForm onSubmit={addTodo} />
+        <Item
           todos={todos}
           completeTodo={completeTodo}
           removeTodo={removeTodo}
