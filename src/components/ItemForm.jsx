@@ -79,7 +79,7 @@ export default function ItemForm(props, { toggleForm }) {
           <>
             <input
               className="input"
-              placeholder="Add item's TITLE, e.g. VÖXLOV"
+              placeholder="Any Title? e.g. VÖXLOV"
               value={input.title}
               name="title"
               // ref={inputRef}
@@ -87,7 +87,7 @@ export default function ItemForm(props, { toggleForm }) {
             />
             <input
               className="input"
-              placeholder="Add item's PRICE, e.g. 100"
+              placeholder="What's Price, e.g. 100"
               value={input.price}
               name="price"
               // ref={inputRef}
@@ -95,7 +95,7 @@ export default function ItemForm(props, { toggleForm }) {
             />
             <input
               className="input"
-              placeholder="Add item's QUANTITY, e.g. 3"
+              placeholder="How many? e.g. 30"
               value={input.quantity}
               name="quantity"
               // ref={inputRef}
