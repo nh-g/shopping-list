@@ -7,9 +7,9 @@ import logo from '../assets/images/logo.svg'
 export default function Navigation() {
     return (
     <nav id="navigation-bar">
-        <Link to="/" >
+        {/* <Link to="/" > */}
             <img src={logo} alt="logo" className="logo"/>
-        </Link>
+        {/* </Link> */}
 
     </nav>
 );
