@@ -1,7 +1,7 @@
-import React,{useState} from 'react'
+import React, { useState, useEffect } from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
-import {TiEdit} from 'react-icons/ti'
-import ItemForm from './ItemForm'
+import { TiEdit } from "react-icons/ti";
+import ItemForm from "./ItemForm";
 export default function Item({
   listItem,
   completeTodo,
@@ -14,10 +14,15 @@ export default function Item({
     id: null,
     value: "",
   });
-  
+
   const [item, setItem] = useState(listItem);
+    useEffect(() => {
+      console.log("item.jsx", item);
+      setItem(listItem);
+    }, [listItem]);
+
+  console.log("Item", { item, listItem });
   const [isComplete, setIsComplete] = useState(item.isComplete);
-  console.log("item.jsx", item);
   // console.log("setITEMS1", setItem);
   // const itemsArr = [item];
 
@@ -28,8 +33,8 @@ export default function Item({
       }
       return item;
     });
-    console.log("ITEMS", updatedList);    
-    console.log("setITEMS", setItem );
+    console.log("ITEMS", updatedList);
+    console.log("setITEMS", setItem);
     setItem(updatedList);
     // setItems(updatedList.filter((item) => item.isComplete === false));
   };
@@ -73,4 +78,3 @@ export default function Item({
     </div>
   ));
 }
-

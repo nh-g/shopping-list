@@ -3,12 +3,12 @@ import CreateItemButton from "./CreateItemButton";
 import Item from "./Item";
 import ItemForm from "./ItemForm";
 
-export default function ShoppingList({shoppingListItems}) {
-
+export default function ShoppingList({ shoppingListItems }) {
   const [items, setItems] = useState(shoppingListItems);
-    useEffect(() => {
-      console.log("UseEffect Shopping List ", items)
-    }, [items]);
+  useEffect(() => {
+      console.log("ShoppingList", { shoppingListItems, items });
+      setItems(shoppingListItems);
+  }, [shoppingListItems]);
   // const addItem = (item) => {
   //   // Type-in verification
   //   if (!item.title || /^\s*$/.test(item.title)) {
@@ -58,7 +58,6 @@ export default function ShoppingList({shoppingListItems}) {
   //   });
   //   setItems(completedList);
   // };
-
 
   return (
     <div>

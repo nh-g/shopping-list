@@ -5,45 +5,49 @@ import Navigation from "./components/Navigation";
 import NormalScreen from "./screens/NormalScreen";
 import ItemForm from "./components/ItemForm";
 function App() {
-    const [list, setList] = useState([]);
+  const [list, setList] = useState([]);
 
-    // const loadData = (storageKey) => {
-    //   const data = localStorage.getItem(storageKey)
-    //   const parsedData = JSON.parse(data) ?? [];
+  // const loadData = (storageKey) => {
+  //   const data = localStorage.getItem(storageKey)
+  //   const parsedData = JSON.parse(data) ?? [];
 
-    //   return parsedData
-    // }
+  //   return parsedData
+  // }
 
-    // const saveData = useCallback(
-    //   (storageKey, list) => {
-    //     const stringifyList = JSON.stringify(list);
-    //     localStorage.setItem(storageKey, stringifyList)
-    //   },[])
-    
-    // useEffect(() => setList(loadData("STORAGE_KEY")), [setList]);
-    // useEffect(() => saveData("STORAGE_KEY", list), [saveData, list]);
+  // const saveData = useCallback(
+  //   (storageKey, list) => {
+  //     const stringifyList = JSON.stringify(list);
+  //     localStorage.setItem(storageKey, stringifyList)
+  //   },[])
 
-    useEffect(() => {
-      const shoppingItems = JSON.parse(
-        localStorage.getItem("shopping list' items")
-      );
-      if (shoppingItems) {
-        setList(shoppingItems);
-      }
-    }, []);
+  // useEffect(() => setList(loadData("STORAGE_KEY")), [setList]);
+  // useEffect(() => saveData("STORAGE_KEY", list), [saveData, list]);
 
-    useEffect(() => {
-      localStorage.setItem("shopping list' items", JSON.stringify(list));
-    }, [list]);
 
-    const addItem = (item) => {
-      // Type-in verification
-      if (!item.title || /^\s*$/.test(item.title)) {
-        return;
-      }
-      const newList = [item, ...list];
-      setList(newList);
-    };
+  const addItem = (item) => {
+    // Type-in verification
+    if (!item.title || /^\s*$/.test(item.title)) {
+      return;
+    }
+    const newList = [item, ...list];
+    console.log("addItem", { list, newList });
+    setList(newList);
+  };
+
+  useEffect(() => {
+    const shoppingItems = JSON.parse(
+      localStorage.getItem("shopping list' items")
+    );
+    if (shoppingItems) {
+      setList(shoppingItems);
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log("useEffect list changed", { list });
+    localStorage.setItem("shopping list' items", JSON.stringify(list));
+  }, [list]);
+
 
   return (
     <div className="todo-app">
