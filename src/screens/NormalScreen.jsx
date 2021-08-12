@@ -23,19 +23,30 @@ export default function NormalScreen({ list, removeItem, completeItem }) {
     <div>
       {/* <SortControl list={list} /> */}
       {/* active items */}
-      <ShoppingList
+      {/* <ShoppingList
         shoppingListItems={activeList}
         removeItem={removeItem}
         completeItem={completeItem}
+      /> */}
+      <Item
+        listItem={activeList}
+        completeItem={completeItem}
+        removeItem={removeItem}
       />
+
       {/* acquired items */}
       <CompletedList
         showCompleted={showCompletedList}
         toggleShow={toggleShow}
       />
       {showCompletedList && (
-        <AcquiredList
-          shoppingListItems={inactiveList}
+        // <AcquiredList
+        //   shoppingListItems={inactiveList}
+        //   removeItem={removeItem}
+        //   completeItem={completeItem}
+        // />
+        <AcquiredItem
+          acquiredItem={inactiveList}
           removeItem={removeItem}
           completeItem={completeItem}
         />
