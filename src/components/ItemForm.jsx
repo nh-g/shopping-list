@@ -84,6 +84,9 @@ export default function ItemForm(props, { toggleForm }) {
               </>
             ) : (
               <>
+                <label className="form-label" htmlFor="name">
+                  Title*
+                </label>
                 <input
                   className="input"
                   placeholder="Any Title? e.g. VÖXLOV"
@@ -91,6 +94,9 @@ export default function ItemForm(props, { toggleForm }) {
                   name="title"
                   onChange={handleChange}
                 />
+                <label className="form-label" htmlFor="price">
+                  Price
+                </label>
                 <input
                   className="input"
                   placeholder="What's Price? e.g. 100"
@@ -98,6 +104,9 @@ export default function ItemForm(props, { toggleForm }) {
                   name="price"
                   onChange={handleChange}
                 />
+                <label className="form-label" htmlFor="quantity">
+                  Quantity
+                </label>
                 <input
                   className="input"
                   placeholder="How many? e.g. 30"
