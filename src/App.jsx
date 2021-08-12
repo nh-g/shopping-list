@@ -23,17 +23,6 @@ function App() {
   // useEffect(() => setList(loadData("STORAGE_KEY")), [setList]);
   // useEffect(() => saveData("STORAGE_KEY", list), [saveData, list]);
 
-
-  const addItem = (item) => {
-    // Type-in verification
-    if (!item.title || /^\s*$/.test(item.title)) {
-      return;
-    }
-    const newList = [item, ...list];
-    console.log("addItem", { list, newList });
-    setList(newList);
-  };
-
   useEffect(() => {
     const shoppingItems = JSON.parse(
       localStorage.getItem("shopping list' items")
@@ -48,6 +37,42 @@ function App() {
     localStorage.setItem("shopping list' items", JSON.stringify(list));
   }, [list]);
 
+  const addItem = (item) => {
+    // Type-in verification
+    if (!item.title || /^\s*$/.test(item.title)) {
+      return;
+    }
+    const newList = [item, ...list];
+    console.log("addItem", { list, newList });
+    setList(newList);
+  };
+
+  // const updateItem = (itemId, newValue) => {
+  //   // Type-in verification
+  //   if (!newValue.title || /^\s*$/.test(newValue.title)) {
+  //     return;
+  //   }
+  //   setItems((prev) =>
+  //     prev.map((item) => (item.id === itemId ? newValue : item))
+  //   );
+  // };
+
+  const removeItem = (id) => {
+    const afterRemoveArray = [...list].filter((item) => item.id !== id);
+    setList(afterRemoveArray);
+  };
+
+  const completeItem = (id) => {
+    let updatedList = list.map((item) => {
+      if (item.id === id) {
+        item.isComplete = !item.isComplete;
+      }
+      return item;
+    });
+    setList(updatedList);
+    // setItems(updatedList.filter((item) => item.isComplete === false));
+  };
+
 
   return (
     <div className="todo-app">
@@ -56,7 +81,11 @@ function App() {
       {list.length === 0 ? (
         <span>Welcome Screen</span>
       ) : (
-        <NormalScreen list={list} />
+        <NormalScreen
+          list={list}
+          removeItem={removeItem}
+          completeItem={completeItem}
+        />
       )}
       <ItemForm onSubmit={addItem} />
     </div>
