@@ -39,9 +39,17 @@ export default function Item({
       className={item.isComplete ? "todo-row complete" : "todo-row"}
       key={index}
     >
-      <div key={item.id} onClick={() => completeItem(item.id)}>
-        {item.title}, {item.price}:-, {item.quantity}
-      </div>
+      <label>
+        <input
+          type="checkbox"
+          key={item.id}
+          onClick={() => completeItem(item.id)}
+        />
+        <span>
+          {" "}
+          {item.title}, {item.price}:-, {item.quantity}
+        </span>
+      </label>
       <div className="icons">
         <RiDeleteBinLine
           onClick={() => removeItem(item.id)}
