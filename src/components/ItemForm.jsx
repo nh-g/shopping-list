@@ -33,7 +33,7 @@ export default function ItemForm(props, { toggleForm }) {
       title: input.title.toUpperCase(),
       price: input.price,
       quantity: input.quantity,
-      // isComplete: false
+      isComplete: false
     });
     toggleAddingItem();
     setInput(initialInput);
