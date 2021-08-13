@@ -80,7 +80,7 @@ export default function ItemForm(props) {
               onChange={handleChange}
             />
             <button className="button-main yellow" onClick={handleSubmit}>
-              Create item
+              Create
             </button>
             <button className="close-icon" onClick={toggleAddingItem}>
               x
