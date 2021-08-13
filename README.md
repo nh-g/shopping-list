@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# 1. About Project
+## 1. About Project
 A simple to do list app to allow users to add items to their shopping list.
 Hosted link: https://shopping-list-app-eika.web.app/
 ---
