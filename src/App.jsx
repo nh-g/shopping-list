@@ -7,22 +7,7 @@ import ItemForm from "./components/ItemForm";
 function App() {
   const [list, setList] = useState([]);
 
-  // const loadData = (storageKey) => {
-  //   const data = localStorage.getItem(storageKey)
-  //   const parsedData = JSON.parse(data) ?? [];
-
-  //   return parsedData
-  // }
-
-  // const saveData = useCallback(
-  //   (storageKey, list) => {
-  //     const stringifyList = JSON.stringify(list);
-  //     localStorage.setItem(storageKey, stringifyList)
-  //   },[])
-
-  // useEffect(() => setList(loadData("STORAGE_KEY")), [setList]);
-  // useEffect(() => saveData("STORAGE_KEY", list), [saveData, list]);
-
+  // loadData
   useEffect(() => {
     const shoppingItems = JSON.parse(
       localStorage.getItem("shopping list' items")
@@ -32,6 +17,7 @@ function App() {
     }
   }, []);
 
+  // saveData
   useEffect(() => {
     console.log("useEffect list changed", { list });
     localStorage.setItem("shopping list' items", JSON.stringify(list));
@@ -47,16 +33,6 @@ function App() {
     setList(newList);
   };
 
-  // const updateItem = (itemId, newValue) => {
-  //   // Type-in verification
-  //   if (!newValue.title || /^\s*$/.test(newValue.title)) {
-  //     return;
-  //   }
-  //   setItems((prev) =>
-  //     prev.map((item) => (item.id === itemId ? newValue : item))
-  //   );
-  // };
-
   const removeItem = (id) => {
     const afterRemoveArray = [...list].filter((item) => item.id !== id);
     setList(afterRemoveArray);
@@ -70,7 +46,6 @@ function App() {
       return item;
     });
     setList(updatedList);
-    // setItems(updatedList.filter((item) => item.isComplete === false));
   };
 
 
