@@ -4,14 +4,28 @@ import Navigation from "./components/Navigation";
 import NormalScreen from "./screens/NormalScreen";
 import ItemForm from "./components/ItemForm";
 import WelcomeScreen from "./screens/WelcomeScreen";
+import { valueValidation } from "./javaScripts/valueValidation";
+import { sortByString, sortByNumber } from "./javaScripts/list-sorter";
+import SortControl from "./components/SortControl";
 function App() {
   const [list, setList] = useState([]);
+  const STORAGE_KEY = "eika shopping list";
+  const [activeSort, setActiveSort] = useState("");
+  function sortListByName(list, key) {
+    const sortedList = sortByString(list, key);
+    setActiveSort("name");
+    setList(sortedList);
+  }
+
+  function sortListByPrice(list, key) {
+    const sortedList = sortByNumber(list, key);
+    setActiveSort("price");
+    setList(sortedList);
+  }
 
   // loadData
   useEffect(() => {
-    const shoppingItems = JSON.parse(
-      localStorage.getItem("shopping list' items")
-    );
+    const shoppingItems = JSON.parse(localStorage.getItem(STORAGE_KEY));
     if (shoppingItems) {
       setList(shoppingItems);
     }
@@ -20,17 +34,23 @@ function App() {
   // saveData
   useEffect(() => {
     console.log("useEffect list changed", { list });
-    localStorage.setItem("shopping list' items", JSON.stringify(list));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
   }, [list]);
 
   const addItem = (item) => {
     // Type-in verification
-    if (!item.title || /^\s*$/.test(item.title)) {
-      return;
+    const validationErrors = valueValidation(item.name, item.price, item.quantity)
+    const isValid = Object.keys(validationErrors).length === 0;
+
+    if (isValid){
+      const newList = [item, ...list];
+      console.log("addItem", { list, newList });
+      setList(newList);
+    }else{
+      alert(
+        "Please enter valid values. Name and Price fields are required. Price and Quantity fields only contain digits 0 to 9."
+      );
     }
-    const newList = [item, ...list];
-    console.log("addItem", { list, newList });
-    setList(newList);
   };
 
   const removeItem = (id) => {
@@ -48,23 +68,29 @@ function App() {
     setList(updatedList);
   };
 
-
   return (
     <div className="App">
       <Navigation />
-      <h1>EIKA shopping list</h1>
+      <h2>EIKA shopping list</h2>
       {list.length === 0 ? (
-        <WelcomeScreen/>
+        <WelcomeScreen />
       ) : (
-        <NormalScreen
-          list={list}
-          removeItem={removeItem}
-          completeItem={completeItem}
-        />
+        <>
+          <SortControl
+            list={list}
+            activeSort={activeSort}
+            sortListByName={sortListByName}
+            sortListByPrice={sortListByPrice}
+          />
+          <NormalScreen
+            list={list}
+            removeItem={removeItem}
+            completeItem={completeItem}
+          />
+        </>
       )}
       <ItemForm onSubmit={addItem} />
     </div>
-
   );
 }
 

@@ -1,42 +1,23 @@
-import React, {useState, useEffect} from 'react'
-import { sortByString, sortByNumber } from '../javaScripts/list-sorter';
+import SorterImg from '../assets/images/sorter.svg'
+export default function SortControl({ list, activeSort, sortListByName, sortListByPrice }) {
 
-export default function SortControl({list, activeSort}) {
-    const [sortList, setSortList] = useState(list)
-    useEffect(() => {
-        setSortList(list);
-    }, [list]);
-    
-    function sortListByName(list, key) {
-        const sortedList = sortByString(list, key)
+  return (
+    <section className="sort-controls">
+      <img src={SorterImg} alt="Sorter Icon" />
+      <span className="label"> Sort by:</span>
+      <button
+        className={`sort-toggler ${activeSort === "name" ? "active" : ""}`}
+        onClick={() => sortListByName(list, "name")}
+      >
+        Name
+      </button>
 
-        // setActiveSort("name");
-        setSortList(sortedList)
-    }
-
-    function sortListByPrice(list, key) {
-        const sortedList = sortByNumber(list, key);
-
-        // setActiveSort("price");
-        setSortList(sortedList);
-    }
-
-    return (
-      <section className="sort-controls">
-        <span className="label">Sort by: </span>
-        <button
-          className={`sort-toggler ${activeSort === "name" ? "active" : ""}`}
-          onClick={() => sortListByName}
-        >
-          Name
-        </button>
-
-        <button
-          className={`sort-toggler ${activeSort === "price" ? "active" : ""}`}
-          onClick={() => sortListByPrice}
-        >
-          Price
-        </button>
-      </section>
-    );
+      <button
+        className={`sort-toggler ${activeSort === "price" ? "active" : ""}`}
+        onClick={() => sortListByPrice(list, "price")}
+      >
+        Price
+      </button>
+    </section>
+  );
 }
