@@ -4,15 +4,6 @@ import openEye from "../assets/images/open-eye.svg";
 import ShoppingList from './ShoppingList';
 
 export default function ShowAcquiredToggler({ showCompleted, toggleShow }) {
-  //   const [showCompleted, setShowCompleted] = useState(showCompletedList);
-
-  //   useEffect(() => {
-  //     console.log("showCompleted", { showCompleted });
-  //     setShowCompleted(showCompleted);
-  //   }, [showCompleted]);
-
-  // Functions
-  //   const toggleBoughtList = () => setShowCompleted(!showCompleted);
 
   const promptShowCompleted = showCompleted
     ? "Hide acquired items"
@@ -21,11 +12,9 @@ export default function ShowAcquiredToggler({ showCompleted, toggleShow }) {
   const eyeIcon = showCompleted ? closeEye : openEye;
 
   return (
-    <section className="CompletedListControls">
-      <button type="button" onClick={toggleShow} className="button-subtle">
-        <img src={eyeIcon} alt="" className="icon" />
-        {promptShowCompleted}
-      </button>
-    </section>
+    <button type="button" onClick={toggleShow} className="show-toggler">
+      <img src={eyeIcon} alt="" className="eye icon to open and close" />
+      <span>{showCompleted ? "Hide" : "View"} acquired items</span>
+    </button>
   );
 }

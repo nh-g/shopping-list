@@ -1,9 +1,9 @@
-import { BrowserRouter } from "react-router-dom";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import "./styles/styles.sass";
 import Navigation from "./components/Navigation";
 import NormalScreen from "./screens/NormalScreen";
 import ItemForm from "./components/ItemForm";
+import WelcomeScreen from "./screens/WelcomeScreen";
 function App() {
   const [list, setList] = useState([]);
 
@@ -50,11 +50,11 @@ function App() {
 
 
   return (
-    <div className="todo-app">
+    <div className="App">
       <Navigation />
       <h1>EIKA shopping list</h1>
       {list.length === 0 ? (
-        <span>Welcome Screen</span>
+        <WelcomeScreen/>
       ) : (
         <NormalScreen
           list={list}
@@ -65,7 +65,6 @@ function App() {
       <ItemForm onSubmit={addItem} />
     </div>
 
-    // add toggle between WelcomePage and NormalPage
   );
 }
 

@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react'
 
-export default function ItemForm(props, { toggleForm }) {
+export default function ItemForm(props) {
   const [openForm, setOpenForm] = useState(false);
   const toggleAddingItem = () => {
     setOpenForm(!openForm);
@@ -12,9 +12,7 @@ export default function ItemForm(props, { toggleForm }) {
     quantity: "",
   };
 
-  const [input, setInput] = useState(
-    props.edit ? props.edit.value || "": initialInput
-  ); // to display the current value before edit
+  const [input, setInput] = useState(initialInput)
 
   // Handle change
   const handleChange = (e) => {
@@ -43,47 +41,15 @@ export default function ItemForm(props, { toggleForm }) {
   return (
     <>
       {!openForm && (
-        <div>
-          <button className="button" onClick={toggleAddingItem}>
+          <button className="button-main" onClick={toggleAddingItem}>
             ＋ Add items
           </button>
-        </div>
       )}
 
       {openForm && (
         <div className="popup">
           <form className="form" onSubmit={handleSubmit}>
-            <h3>Add item</h3>
-            {props.edit ? (
-              <>
-                <input
-                  className="input edit"
-                  placeholder="Update item's TITLE"
-                  value={input.title}
-                  name="title"
-                  onChange={handleChange}
-                />
-                <input
-                  className="input edit"
-                  placeholder="Update item's PRICE"
-                  value={input.price}
-                  name="price"
-                  onChange={handleChange}
-                />
-                <input
-                  className="input edit"
-                  placeholder="Update item's QUANTITY"
-                  value={input.quantity}
-                  name="quantity"
-                  onChange={handleChange}
-                />
-                <button className="button edit">Update item</button>
-                <button className="close-icon" onClick={toggleForm}>
-                  x
-                </button>
-              </>
-            ) : (
-              <>
+            <h3>Add item to your list</h3>
                 <label className="form-label" htmlFor="name">
                   Title*
                 </label>
@@ -114,14 +80,12 @@ export default function ItemForm(props, { toggleForm }) {
                   name="quantity"
                   onChange={handleChange}
                 />
-                <button className="button" onClick={handleSubmit}>
-                  Add item to the list
+                <button className="button-main yellow" onClick={handleSubmit}>
+                  Create item
                 </button>
                 <button className="close-icon" onClick={toggleAddingItem}>
                   x
                 </button>
-              </>
-            )}
           </form>
         </div>
       )}

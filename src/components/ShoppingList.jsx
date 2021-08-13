@@ -12,7 +12,7 @@ export default function ShoppingList({ shoppingListItems, removeItem, completeIt
   ));
 
   return (
-    <section>
+    <section className="shopping-list">
       {shoppingListItems.length > 0 ? List: <p>No item to show...</p>}
     </section>
   );

@@ -10,8 +10,19 @@ html, body, #root, .App
 body
   background-color: $color-white
 
-.todo-app
+.App
   color: $color-text-tertiary
   font-family: "Noto Sans", sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
+  text-align: center
+  margin: 0 auto
+  margin: 24px
+
+
+@media (min-width: 550px) 
+  .App 
+    max-width: 400px
+    margin: 0 auto
+    margin-top: 48px
+
