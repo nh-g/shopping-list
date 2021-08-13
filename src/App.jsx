@@ -72,6 +72,8 @@ function App() {
     <div className="App">
       <Navigation />
       <h2>EIKA shopping list</h2>
+      <ItemForm onSubmit={addItem} />
+
       {list.length === 0 ? (
         <WelcomeScreen />
       ) : (
@@ -89,7 +91,6 @@ function App() {
           />
         </>
       )}
-      <ItemForm onSubmit={addItem} />
     </div>
   );
 }
