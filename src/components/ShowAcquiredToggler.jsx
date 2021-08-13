@@ -1,7 +1,5 @@
-import React,{useState, useEffect} from 'react'
 import closeEye from "../assets/images/close-eye.svg";
 import openEye from "../assets/images/open-eye.svg";
-import ShoppingList from './ShoppingList';
 
 export default function ShowAcquiredToggler({ showCompleted, toggleShow }) {
 
