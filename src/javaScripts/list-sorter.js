@@ -9,5 +9,5 @@ export function sortByString(array, key) {
 }
 
 export function sortByNumber(array, key) {
-    return [...array].sort((a,b) => a[key] - b[key]) 
+    return [...array].sort((a,b) => b[key] - a[key]) 
 }
