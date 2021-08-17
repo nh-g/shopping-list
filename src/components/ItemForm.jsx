@@ -27,11 +27,11 @@ export default function ItemForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     props.onSubmit({
-      id: Math.floor(Math.random() * 100000),
+      id: Math.floor(Math.random() * 100000), // you can use date. There is one in ten trillions that you get a repeated id using math...
       name: input.name.toUpperCase(),
       price: input.price,
       quantity: input.quantity,
-      isComplete: false,
+      isComplete: false, // nice name, i like it as much as acquired, both are equally good.
     });
     toggleAddingItem();
     setInput(initialInput);
@@ -49,6 +49,8 @@ export default function ItemForm(props) {
         <div className="popup">
           <form className="form" onSubmit={handleSubmit}>
             <h3>Add item to your list</h3>
+
+            {/* You can refactor the label and the input into a single component to make this one shorter and then pass the values as arguments */}
             <label className="form-label" htmlFor="name">
               Name*
             </label>

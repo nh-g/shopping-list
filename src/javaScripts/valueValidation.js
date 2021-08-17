@@ -6,10 +6,13 @@ const validPrice = (value) => {
   const containsOnlyDigits = /^\d+$/.test(value);
   return containsOnlyDigits;
 };
+// Remove unuused comments
+
 // const validQuantity = (value) => {
 //   const containsOnlyDigits = /^\d+$/.test(value);
 //   return containsOnlyDigits;
 // };
+
 
 export const valueValidation = (name, price, quantity) => {
   const result = {};
