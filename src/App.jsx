@@ -1,4 +1,7 @@
+//npm packages
 import { useState, useEffect } from "react";
+
+//local project files
 import "./styles/styles.sass";
 import Navigation from "./components/Navigation";
 import NormalScreen from "./screens/NormalScreen";
@@ -7,10 +10,8 @@ import WelcomeScreen from "./screens/WelcomeScreen";
 import { valueValidation } from "./javaScripts/valueValidation";
 import { sortByString, sortByNumber } from "./javaScripts/list-sorter";
 import SortControl from "./components/SortControl";
-// add an space between imports
 
-// you can use export default to skip one line of code.
-function App() {
+export default function App() {
   const [list, setList] = useState([]);
   const STORAGE_KEY = "eika shopping list";
   const [activeSort, setActiveSort] = useState("");
@@ -39,9 +40,6 @@ function App() {
 
   // saveData
   useEffect(() => {
-    // no logs on your final branch
-    console.log("useEffect list changed", { list });
-
     localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
   }, [list]);
 
@@ -95,9 +93,10 @@ function App() {
           {/* Sort controls should be inside normal screen */}
           <SortControl
             list={list}
-            activeSort={activeSort}
-            sortListByName={sortListByName}
-            sortListByPrice={sortListByPrice}
+            setList={setList}
+            // activeSort={activeSort}
+            // sortListByName={sortListByName}
+            // sortListByPrice={sortListByPrice}
           />
           <NormalScreen
             list={list}
@@ -109,5 +108,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
