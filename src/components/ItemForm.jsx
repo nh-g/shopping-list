@@ -42,7 +42,7 @@ export default function ItemForm(props) {
     <>
       {!openForm && (
         <button className="button" onClick={toggleAddingItem}>
-          ＋ Add items
+          ＋ ADD ITEMS
         </button>
       )}
 
@@ -88,14 +88,14 @@ export default function ItemForm(props) {
             </div>
             <div className="form-button">
               <button className="button second" onClick={handleSubmit}>
-                Create
+                CREATE
               </button>
               
               <button
                 className="button second yellow"
                 onClick={toggleAddingItem}
               >
-                Cancel
+                CANCEL
               </button>
             </div>
 

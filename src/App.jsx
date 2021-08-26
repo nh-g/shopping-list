@@ -68,16 +68,12 @@ export default function App() {
     <div className="App">
       <Navigation />
       <h2>EIKA shopping list</h2>
-      <ItemForm onSubmit={addItem} />
 
       {list.length === 0 ? (
         <WelcomeScreen />
       ) : (
         <>
-          <SortControl
-            list={list}
-            setList={setList}
-          />
+          <SortControl list={list} setList={setList} />
           <NormalScreen
             list={list}
             removeItem={removeItem}
@@ -85,6 +81,8 @@ export default function App() {
           />
         </>
       )}
+      
+      <ItemForm onSubmit={addItem} />
     </div>
   );
 }
