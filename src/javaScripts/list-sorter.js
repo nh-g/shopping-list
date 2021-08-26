@@ -10,6 +10,11 @@ export function sortByString(array, key) {
   return sortedList;
 }
 
-export function sortByNumber(array, key) {
+export function sortByNumberDescending(array, key) {
   return [...array].sort((a, b) => b[key] - a[key]);
 }
+export function sortByNumberAscending(array, key) {
+  return [...array].sort((a, b) => a[key] - b[key]);
+}
+
+
