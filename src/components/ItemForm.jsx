@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import FormDataField from "./FormDataField";
 
 export default function ItemForm(props) {
   const [openForm, setOpenForm] = useState(false);
@@ -12,13 +13,13 @@ export default function ItemForm(props) {
     quantity: "",
   };
 
-  const [input, setInput] = useState(initialInput);
+  const [values, setValues] = useState(initialInput);
 
   // Handle change
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setInput({
-      ...input,
+    setValues({
+      ...values,
       [name]: value,
     });
   };
@@ -27,20 +28,20 @@ export default function ItemForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     props.onSubmit({
-      id: Math.floor(Math.random() * 100000), // you can use date. There is one in ten trillions that you get a repeated id using math...
-      name: input.name.toUpperCase(),
-      price: input.price,
-      quantity: input.quantity,
-      isComplete: false, // nice name, i like it as much as acquired, both are equally good.
+      id: Math.floor(Math.random() * 100000),
+      name: values.name.toUpperCase(),
+      price: values.price,
+      quantity: values.quantity,
+      isComplete: false,
     });
     toggleAddingItem();
-    setInput(initialInput);
+    setValues(initialInput);
   };
 
   return (
     <>
       {!openForm && (
-        <button className="button-main" onClick={toggleAddingItem}>
+        <button className="button" onClick={toggleAddingItem}>
           ＋ Add items
         </button>
       )}
@@ -48,45 +49,59 @@ export default function ItemForm(props) {
       {openForm && (
         <div className="popup">
           <form className="form" onSubmit={handleSubmit}>
-            <h3>Add item to your list</h3>
+            {/* <h4>Add item to your list</h4> */}
+            <FormDataField
+              // handleBlur={handleBlur}
+              handleChange={handleChange}
+              values={values}
+              fieldName={"name"}
+              inputType={"text"}
+              placeholder="e.g. VÖXLOV"
+              label={"What's product name? *"}
+            />
+            <FormDataField
+              // handleBlur={handleBlur}
+              handleChange={handleChange}
+              values={values}
+              fieldName={"price"}
+              inputType={"text"}
+              placeholder="e.g. 100"
+              label={"What's product price? *"}
+            />
+            <div className="form-group">
+              <label htmlFor="quantity">How many items? </label>
+              <input
+                type="number"
+                className="input"
+                id="quantity"
+                placeholder="e.g. 29"
+                value={values.quantity || ""}
+                onChange={handleChange}
+                // onBlur={handleBlur}
+                name="quantity"
+                min="0"
+                required
+              />
+              {/* <span className="error">
+                {touched.quantity && errors.quantity}
+              </span> */}
+            </div>
+            <div className="form-button">
+              <button className="button second" onClick={handleSubmit}>
+                Create
+              </button>
+              
+              <button
+                className="button second yellow"
+                onClick={toggleAddingItem}
+              >
+                Cancel
+              </button>
+            </div>
 
-            {/* You can refactor the label and the input into a single component to make this one shorter and then pass the values as arguments */}
-            <label className="form-label" htmlFor="name">
-              Name*
-            </label>
-            <input
-              className="input"
-              placeholder="Any name? e.g. VÖXLOV"
-              value={input.name}
-              name="name"
-              onChange={handleChange}
-            />
-            <label className="form-label" htmlFor="price">
-              Price*
-            </label>
-            <input
-              className="input"
-              placeholder="What's Price? e.g. 100"
-              value={input.price}
-              name="price"
-              onChange={handleChange}
-            />
-            <label className="form-label" htmlFor="quantity">
-              Quantity
-            </label>
-            <input
-              className="input"
-              placeholder="How many? e.g. 30"
-              value={input.quantity}
-              name="quantity"
-              onChange={handleChange}
-            />
-            <button className="button-main yellow" onClick={handleSubmit}>
-              Create
-            </button>
-            <button className="close-icon" onClick={toggleAddingItem}>
+            {/* <button className="close-icon" onClick={toggleAddingItem}>
               x
-            </button>
+            </button> */}
           </form>
         </div>
       )}
