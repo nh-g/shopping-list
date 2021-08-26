@@ -8,27 +8,11 @@ import NormalScreen from "./screens/NormalScreen";
 import ItemForm from "./components/ItemForm";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import { valueValidation } from "./javaScripts/valueValidation";
-import { sortByString, sortByNumber } from "./javaScripts/list-sorter";
 import SortControl from "./components/SortControl";
 
 export default function App() {
   const [list, setList] = useState([]);
   const STORAGE_KEY = "eika shopping list";
-  const [activeSort, setActiveSort] = useState("");
-
-  // this can be placed inside the sorter component
-  function sortListByName(list, key) {
-    const sortedList = sortByString(list, key);
-    setActiveSort("name");
-    setList(sortedList);
-  }
-
-  // this can be placed inside the sorter component
-  function sortListByPrice(list, key) {
-    const sortedList = sortByNumber(list, key);
-    setActiveSort("price");
-    setList(sortedList);
-  }
 
   // loadData
   useEffect(() => {
@@ -90,13 +74,9 @@ export default function App() {
         <WelcomeScreen />
       ) : (
         <>
-          {/* Sort controls should be inside normal screen */}
           <SortControl
             list={list}
             setList={setList}
-            // activeSort={activeSort}
-            // sortListByName={sortListByName}
-            // sortListByPrice={sortListByPrice}
           />
           <NormalScreen
             list={list}
