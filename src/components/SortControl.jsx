@@ -38,45 +38,46 @@ export default function SortControl({list,setList}) {
 
   function sortListByDateAscending(list, key) {
     const sortedList = sortByNumberAscending(list, key);
-    setActiveSort("price");
+    setActiveSort("date");
     setList(sortedList);
   }
 
   return (
     <section className="sort-controls">
-      <img src={SorterImg} alt="Sorter Icon" />
-      {/* <span className="label"> Sort by:</span> */}
-      <button
-        className={`sort-toggler ${activeSort === "name" ? "active" : ""}`}
-        onClick={() => sortListByName(list, "name")}
-      >
-        Name
-      </button>
+      <img src={SorterImg} alt="Sorter Icon"/>
+      <span className="label"> Sort by: </span>
+      <span className="box">
+        <button
+          className={`sort-toggler ${activeSort === "name" ? "active" : ""}`}
+          onClick={() => sortListByName(list, "name")}
+        >
+          Name
+        </button>
 
-      <button
-        className={`sort-toggler ${activeSort === "price" ? "active" : ""}`}
-        onClick={() => {
-          toggleSortAscending();
-          sortAscending
-            ? sortListByPriceDescending(list, "price")
-            : sortListByPriceAscending(list, "price");
-        }}
-      >
-        <span>{sortAscending ? "⬇" : "⬆"}Price</span>
-      </button>
+        <button
+          className={`sort-toggler ${activeSort === "price" ? "active" : ""}`}
+          onClick={() => {
+            toggleSortAscending();
+            sortAscending
+              ? sortListByPriceDescending(list, "price")
+              : sortListByPriceAscending(list, "price");
+          }}
+        >
+          <span>{sortAscending ? "⬇" : "⬆"}Price</span>
+        </button>
 
-      <button
-        className={`sort-toggler ${activeSort === "date" ? "active" : ""}`}
-        onClick={() => {
-          toggleSortAscending();
-          sortAscending
-            ? sortListByDateDescending(list, "id")
-            : sortListByDateAscending(list, "id");
-        }}
-      >
-        <span>{sortAscending ? "⬇" : "⬆"}Date</span>
-      </button>
-
+        <button
+          className={`sort-toggler ${activeSort === "date" ? "active" : ""}`}
+          onClick={() => {
+            toggleSortAscending();
+            sortAscending
+              ? sortListByDateDescending(list, "id")
+              : sortListByDateAscending(list, "id");
+          }}
+        >
+          <span>{sortAscending ? "⬇" : "⬆"}Date</span>
+        </button>
+      </span>
     </section>
   );
 }
