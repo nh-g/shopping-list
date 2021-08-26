@@ -2,10 +2,7 @@ import closeEye from "../assets/images/close-eye.svg";
 import openEye from "../assets/images/open-eye.svg";
 
 export default function ShowAcquiredToggler({ showCompleted, toggleShow }) {
-  const promptShowCompleted = showCompleted
-    ? "Hide acquired items"
-    : "View acquired items";
-
+  
   const eyeIcon = showCompleted ? closeEye : openEye;
 
   return (
