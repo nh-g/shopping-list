@@ -16,8 +16,8 @@ export default function ShoppingList({
   ));
 
   return (
-    <section className="shopping-list">
+    <table className="shopping-list">
       {shoppingListItems.length > 0 ? List : <p>No item to show...</p>}
-    </section>
+    </table>
   );
 }

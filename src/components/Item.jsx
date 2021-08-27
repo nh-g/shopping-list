@@ -6,31 +6,26 @@ export default function Item({ listItem, completeItem, removeItem }) {
   const { id, name, price, isComplete, quantity } = listItem; // nice use of destructuring
 
   return (
-    <>
-      <article
-        className={isComplete ? "shopping-item complete" : "shopping-item"}
-        key={id}
-      >
-        <div>
-          <label>
-            <input type="checkbox" key={id} onClick={() => completeItem(id)} />
-          </label>
-          <span>{name}</span>{" "}
-          <span className="quantity">
-            {quantity}
-            {quantity ? "pc" : ""}
-          </span>
-        </div>
-
-        <div className="icons">
-          <span className="price">{price}:-</span>
-          <RiDeleteBinLine
-            onClick={() => removeItem(id)}
-            className="delete-icon"
-            style={{ color: "salmon" }}
-          />
-        </div>
-      </article>
-    </>
+    <tr
+      className={isComplete ? "shopping-item complete" : "shopping-item"}
+      key={id}
+    >
+      <td>
+        <input type="checkbox" key={id} onClick={() => completeItem(id)} />
+      </td>
+      <td className="name">{name}</td>
+      <td className="quantity">
+        {quantity}
+        {quantity ? " pc" : ""}
+      </td>
+      <td className="price">{price}:-</td>
+      <td>
+        <RiDeleteBinLine
+          onClick={() => removeItem(id)}
+          className="delete-icon"
+          style={{ color: "salmon" }}
+        />
+      </td>
+    </tr>
   );
 }
