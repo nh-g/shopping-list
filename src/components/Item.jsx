@@ -4,7 +4,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import Checkbox from "./Checkbox";
 
 export default function Item({ listItem, completeItem, removeItem }) {
-  const { id, name, price, isComplete, quantity } = listItem; // nice use of destructuring
+  const { id, productName, price, isComplete, quantity } = listItem; // nice use of destructuring
 
   return (
     <tr
@@ -14,7 +14,7 @@ export default function Item({ listItem, completeItem, removeItem }) {
         {/* <input type="checkbox" key={id} onClick={() => completeItem(id)} /> */}
         <Checkbox checked={isComplete} onChange={() => completeItem(id)}/>
       </td>
-      <td className="name">{name}</td>
+      <td className="name">{productName}</td>
       <td className="quantity">
         {quantity}
         {quantity ? " pc" : ""}
