@@ -1,6 +1,4 @@
 export default function FormDataField({
-  // errors,
-  // touched,
   handleBlur,
   handleChange,
   values,
