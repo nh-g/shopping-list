@@ -5,9 +5,6 @@ export const nameValidation = (fieldName, fieldValue) => {
   if (fieldValue.trim() === "") {
     return `${fieldName} is required`;
   }
-  if (/[^a-zA-Z -]/.test(fieldValue)) {
-    return "Invalid characters";
-  }
   if (fieldValue.trim().length > word_length) {
     return `Name must be less than ${word_length} characters`;
   }
