@@ -7,7 +7,6 @@ import Navigation from "./components/Navigation";
 import NormalScreen from "./screens/NormalScreen";
 import ItemForm from "./components/ItemForm";
 import WelcomeScreen from "./screens/WelcomeScreen";
-import { valueValidation } from "./javaScripts/valueValidation";
 import SortControl from "./components/SortControl";
 
 export default function App() {
@@ -29,25 +28,6 @@ export default function App() {
 
   // By using context API we can move this functionakity to a different file
   // and even withouth it, we can do the validation outside using a function in a separate file and then calling that funciton and modifying the setter here...
-  const addItem = (item) => {
-    // Type-in verification
-    const validationErrors = valueValidation(
-      item.name,
-      item.price,
-      item.quantity
-    );
-    const isValid = Object.keys(validationErrors).length === 0;
-
-    if (isValid) {
-      const newList = [item, ...list];
-      console.log("addItem", { list, newList });
-      setList(newList);
-    } else {
-      alert(
-        "Please enter valid values. Name and Price fields are required. Price and Quantity fields only contain digits 0 to 9."
-      );
-    }
-  };
 
   const removeItem = (id) => {
     const afterRemoveArray = [...list].filter((item) => item.id !== id);
@@ -82,7 +62,7 @@ export default function App() {
         </>
       )}
       
-      <ItemForm onSubmit={addItem} />
+      <ItemForm list ={list} setList ={setList}/>
     </div>
   );
 }

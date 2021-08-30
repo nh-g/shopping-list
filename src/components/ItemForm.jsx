@@ -1,48 +1,88 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
+
 import FormDataField from "./FormDataField";
+// import {validateAll as formValidation, validate,
+// } from "../javaScripts/item-form-validator";
 
-export default function ItemForm(props) {
-  const [openForm, setOpenForm] = useState(false);
-  const toggleAddingItem = () => {
-    setOpenForm(!openForm);
-  };
-
+import {validateAll,validate} from "../javaScripts/item-form-validator";
+import { requestNewItem } from "../javaScripts/add-item";
+export default function ItemForm({ list, setList }) {
   const initialInput = {
-    name: "",
+    productName: "",
     price: "",
     quantity: "",
   };
 
+  const [openForm, setOpenForm] = useState(false);
   const [values, setValues] = useState(initialInput);
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
 
-  // Handle change
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const formValidation = validateAll(values);
+
+  const toggleAddingItem = () => {
+    setOpenForm(!openForm);
+  };
+
+  const handleChange = (event) => {
+    const { name, value: newValue, type } = event.target;
+    //only allow number in number input field type
+    const value = type === "number" ? +newValue : newValue;
+    //save field input values
     setValues({
       ...values,
       [name]: value,
+    });
+    //set the field was touched/modified
+    setTouched({
+      ...touched,
+      [name]: true,
+    });
+  };
+
+  const handleBlur = (event) => {
+    const { name, value } = event.target;
+    //remove whatever error was there previously
+    const { [name]: removedError, ...rest } = errors;
+    //check for a new error
+    const error = validate(name, value);
+    //validate the field if the value has been touched
+    setErrors({
+      ...rest,
+      ...(error && { [name]: touched[name] && error }),
     });
   };
 
   // Handle submit to prevent from reloading page when click to Add button
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.onSubmit({
-      id: Math.floor(Math.random() * 100000),
-      name: values.name.toUpperCase(),
-      price: values.price,
-      quantity: values.quantity,
-      isComplete: false,
-    });
-    toggleAddingItem();
-    setValues(initialInput);
+
+    const newItem = requestNewItem(values);
+
+    setErrors(formValidation.errors);
+    setTouched(formValidation.touched);
+
+    if (
+      !Object.values(formValidation.errors).length && //errors object is empty
+      Object.values(formValidation.touched).length ===
+        Object.values(values).length && //all fields were touched
+      Object.values(formValidation.touched).every((t) => t === true) // every touched field is true
+    ) {
+      setList([...list, newItem]);
+      toggleAddingItem();
+      setValues(initialInput);
+    }
   };
+
+  console.log("TOUCHed", touched)
+  console.log("ERRORS", errors);
+  console.log("Values", values);
 
   return (
     <>
       {!openForm && (
         <button className="button" onClick={toggleAddingItem}>
-          + Add a new item 
+          + Add a new item
         </button>
       )}
 
@@ -51,16 +91,20 @@ export default function ItemForm(props) {
           <form className="form" onSubmit={handleSubmit}>
             {/* <h4>Add item to your list</h4> */}
             <FormDataField
-              // handleBlur={handleBlur}
+              handleBlur={handleBlur}
               handleChange={handleChange}
               values={values}
-              fieldName={"name"}
+              fieldName={"productName"}
               inputType={"text"}
               placeholder="e.g. VÖXLOV"
               label={"What's product name? *"}
             />
+            <span className="error">
+              {touched.productName && errors.productName}
+            </span>
+
             <FormDataField
-              // handleBlur={handleBlur}
+              handleBlur={handleBlur}
               handleChange={handleChange}
               values={values}
               fieldName={"price"}
@@ -68,6 +112,8 @@ export default function ItemForm(props) {
               placeholder="e.g. 100"
               label={"What's product price? *"}
             />
+            <span className="error">{touched.price && errors.price}</span>
+
             <div className="form-group">
               <label htmlFor="quantity">How many items? </label>
               <input
@@ -77,20 +123,18 @@ export default function ItemForm(props) {
                 placeholder="e.g. 29"
                 value={values.quantity || ""}
                 onChange={handleChange}
-                // onBlur={handleBlur}
+                onBlur={handleBlur}
                 name="quantity"
                 min="0"
                 required
               />
-              {/* <span className="error">
-                {touched.quantity && errors.quantity}
-              </span> */}
             </div>
+
             <div className="form-button">
               <button className="button second" onClick={handleSubmit}>
                 Create
               </button>
-              
+
               <button
                 className="button second yellow"
                 onClick={toggleAddingItem}
