@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import "./styles/styles.sass";
 import Navigation from "./components/Navigation";
 import NormalScreen from "./screens/NormalScreen";
-import ItemForm from "./components/ItemForm";
+import AddNewItem from "./components/AddNewItem";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import SortControl from "./components/SortControl";
 
@@ -28,7 +28,9 @@ export default function App() {
 
   // By using context API we can move this functionakity to a different file
   // and even withouth it, we can do the validation outside using a function in a separate file and then calling that funciton and modifying the setter here...
-
+  // (deleted) const addItem = () => {}
+  // From Giang: done by create item-form-validator.js, add-item.js and modify component AddNewItem.jsx
+  
   const removeItem = (id) => {
     const afterRemoveArray = [...list].filter((item) => item.id !== id);
     setList(afterRemoveArray);
@@ -61,8 +63,8 @@ export default function App() {
           />
         </>
       )}
-      
-      <ItemForm list ={list} setList ={setList}/>
+      <br />
+      <AddNewItem list={list} setList={setList} />
     </div>
   );
 }
