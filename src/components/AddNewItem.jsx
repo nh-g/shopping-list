@@ -77,7 +77,7 @@ export default function AddNewItem({ list, setList }) {
   return (
     <>
       {!openForm && (
-        <button className="button" onClick={toggleAddingItem}>
+        <button className="button main" onClick={toggleAddingItem}>
           + Add a new item
         </button>
       )}
