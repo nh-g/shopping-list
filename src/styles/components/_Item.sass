@@ -6,6 +6,7 @@ td, th
   text-align: left
   padding: 8px
   height: 45px
+  overflow: hidden
 
 .shopping-item
   box-sizing: border-box
@@ -25,13 +26,16 @@ td, th
   font-size: 12px
 
 .name
-  max-width: 118px
-  overflow-x: scroll
+  max-width: 120px
+  // overflow-x: scroll
   white-space: nowrap  
 
 .complete
   background: #f0f0f0
   text-decoration: line-through
 
+@media screen and (max-width: 320px)
+  .name
+    max-width: 105px
 
 
