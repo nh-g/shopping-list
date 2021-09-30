@@ -1,26 +1,37 @@
-.button-main
+.button
     background-color: $color-blue
     color: $color-white
-    font-weight: 600
     box-sizing: border-box
-    min-height: 56px
-    border-radius: 500px
-    padding: 0 80px
-    width: 310px
-    margin-bottom: 20px
-
-    // position: -webkit-sticky
-    // position: sticky
-    // font-size: 18px
-    // margin-top: 20px
-
-
-
-.button-main.yellow
-    background-color: $color-yellow
-    width: 210px
-    font-size: 16px
     border: none
-    color: $color-blue
+    min-height: 50px
+    border-radius: 900px
+    padding: 0 40px
+    width: 316px
+    font-size: 17px
+    margin-bottom: 12px
+    font-weight: 900
+
+.button.main
+    display: block
+    position: fixed
+    left: 50%
+    transform: translate(-50%, 0)
+    bottom: 30px
+    margin-top: 12px
+
+
+.button.second
+    width: 260px
+    color: $color-white
     height: 20px
+
+
+.yellow
+    background-color: $color-yellow
+
+@media screen and (max-width: 320px)
+    .button
+        width: 272px
+    .button.second
+        width: 250px
 

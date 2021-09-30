@@ -1,93 +1,50 @@
-import React, { useState, useEffect, useRef } from "react";
-
-export default function ItemForm(props) {
-  const [openForm, setOpenForm] = useState(false);
-  const toggleAddingItem = () => {
-    setOpenForm(!openForm);
-  };
-
-  const initialInput = {
-    name: "",
-    price: "",
-    quantity: "",
-  };
-
-  const [input, setInput] = useState(initialInput);
-
-  // Handle change
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setInput({
-      ...input,
-      [name]: value,
-    });
-  };
-
-  // Handle submit to prevent from reloading page when click to Add button
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    props.onSubmit({
-      id: Math.floor(Math.random() * 100000),
-      name: input.name.toUpperCase(),
-      price: input.price,
-      quantity: input.quantity,
-      isComplete: false,
-    });
-    toggleAddingItem();
-    setInput(initialInput);
-  };
+import FormDataField from './FormDataField';
+export default function ItemForm({ formEventHandler, formData }) {
+    const { errors, touched, values } = formData;
+    const { handleBlur, handleChange } = formEventHandler;
 
   return (
-    <>
-      {!openForm && (
-        <button className="button-main" onClick={toggleAddingItem}>
-          ＋ Add items
-        </button>
-      )}
+          <> 
+        {/* <h4>Add item to your list</h4> */}
+        <FormDataField
+          handleBlur={handleBlur}
+          handleChange={handleChange}
+          values={values}
+          fieldName={"productName"}
+          inputType={"text"}
+          placeholder="e.g. VÖXLOV"
+          label={"What's product name? *"}
+        />
+        <span className="error">
+          {touched.productName && errors.productName}
+        </span>
 
-      {openForm && (
-        <div className="popup">
-          <form className="form" onSubmit={handleSubmit}>
-            <h3>Add item to your list</h3>
-            <label className="form-label" htmlFor="name">
-              Name*
-            </label>
-            <input
-              className="input"
-              placeholder="Any name? e.g. VÖXLOV"
-              value={input.name}
-              name="name"
-              onChange={handleChange}
-            />
-            <label className="form-label" htmlFor="price">
-              Price*
-            </label>
-            <input
-              className="input"
-              placeholder="What's Price? e.g. 100"
-              value={input.price}
-              name="price"
-              onChange={handleChange}
-            />
-            <label className="form-label" htmlFor="quantity">
-              Quantity
-            </label>
-            <input
-              className="input"
-              placeholder="How many? e.g. 30"
-              value={input.quantity}
-              name="quantity"
-              onChange={handleChange}
-            />
-            <button className="button-main yellow" onClick={handleSubmit}>
-              Create
-            </button>
-            <button className="close-icon" onClick={toggleAddingItem}>
-              x
-            </button>
-          </form>
+        <FormDataField
+          handleBlur={handleBlur}
+          handleChange={handleChange}
+          values={values}
+          fieldName={"price"}
+          inputType={"number"}
+          placeholder="e.g. 100"
+          label={"What's product price? *"}
+        />
+        <span className="error">{touched.price && errors.price}</span>
+
+        <div className="form-group">
+          <label htmlFor="quantity">How many items? </label>
+          <input
+            type="number"
+            className="input"
+            id="quantity"
+            placeholder="e.g. 29"
+            value={values.quantity || ""}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            name="quantity"
+            min="0"
+            required
+          />
         </div>
-      )}
-    </>
+        </>
   );
 }

@@ -1,30 +1,45 @@
-.shopping-item 
-  display: flex
-  justify-content: space-between
-  align-items: center
+table 
+  border-collapse: collapse
+  width: 100%
+
+td, th 
+  text-align: left
+  padding: 8px
+  height: 45px
+  overflow: hidden
+
+.shopping-item
   box-sizing: border-box
-  height: 48px
-  margin-bottom: 6px
-  color: $color-text-primary
-  border-bottom: solid thin #D9D9D9
-
-.complete
-    background: #f0f0f0
-    text-decoration: line-through
-
-.shopping-item:last-child
-  border: none
-
-.shopping-item label
-  margin-right: 5px
+  // border: solid 2px #f8f9fa
+  // border-bottom: solid 1px #e3e3e3
+  // box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px
+// .shopping-item:last-child
+//   border: none
 
 .price
   font-weight: bold
   margin-right: 10px
+  text-align: right
 
 .quantity
   color: $color-text-secondary
   font-size: 12px
 
+.name
+  max-width: 120px
+  // overflow-x: scroll
+  white-space: nowrap  
+
+.complete
+  background: #f0f0f0
+  text-decoration: line-through
+
+// .custom-checkbox input
+//   border-radius: 50%
+//   height: 50px
+
+@media screen and (max-width: 320px)
+  .name
+    max-width: 105px
 
 

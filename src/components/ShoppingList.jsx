@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Item from "./Item";
 
-export default function ShoppingList({ shoppingListItems, removeItem, completeItem }) {
+export default function ShoppingList({
+  shoppingListItems,
+  removeItem,
+  completeItem,
+}) {
   const List = shoppingListItems.map((item) => (
     <Item
       key={item.id}
@@ -12,8 +16,8 @@ export default function ShoppingList({ shoppingListItems, removeItem, completeIt
   ));
 
   return (
-    <section className="shopping-list">
-      {shoppingListItems.length > 0 ? List: <p>No item to show...</p>}
-    </section>
+    <table className="shopping-list">
+      {shoppingListItems.length > 0 ? List : <p>No item to show...</p>}
+    </table>
   );
 }

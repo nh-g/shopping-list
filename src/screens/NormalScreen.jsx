@@ -1,11 +1,11 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import ShowAcquiredToggler from "../components/ShowAcquiredToggler";
-import ShoppingList from '../components/ShoppingList'
+import ShoppingList from "../components/ShoppingList";
 import SortControl from "../components/SortControl";
 
 export default function NormalScreen({ list, removeItem, completeItem }) {
   const [showCompletedList, setShowCompletedList] = useState(false);
-  const toggleShow = () => setShowCompletedList(!showCompletedList);  
+  const toggleShow = () => setShowCompletedList(!showCompletedList);
 
   const inactiveList = list.filter((item) => item.isComplete === true);
   const activeList = list.filter((item) => item.isComplete === false);

@@ -7,38 +7,39 @@
     background: #00000050
     color: $color-text-primary
 
+
 .form
+    line-height: 1.5rem
     position: relative
-    width: 230px
+    width: 307px
     margin: 0 auto
     height: auto
     max-height: 70vh
     // margin-top: calc(100vh -10vh - 20px)
     background: $color-white
     border-radius: 10px
-    padding: 20px
+    padding: 10px
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px
     overflow: auto
     margin-top: 3.75rem
-    margin-bottom: 3.75rem
+    margin-bottom: 4.5rem
     z-index: 1000
 
 .input
-    width: 210px
+    width: 252px
+    line-height: 3rem
     text-align: center
     display: block
     appearance: none
     margin: 0 auto
-    font-size: 13px
-    line-height: 1.5
+    font-size: 17px
     background-color: $color-grey
     border: 2px solid transparent
     border-radius: 50em
     outline: 0
     box-shadow: none
     transition: background-color .2s
-    margin-bottom: 30px
-    height: 30px
+    margin-bottom: 10px
 
 .input.edit
     border: 2px solid $color-blue
@@ -55,9 +56,24 @@
     font-size: 30px
     border: none
 
-.form-label
+.form label
     color: $color-blue
-    font-size: 14px
-    font-weight: bold
+    font-size: 17px
+    font-weight: 600
+    display: flex
+    margin-left: 25px
 
-    
+.form-button
+    margin-top: 20px
+
+.error
+    color: red
+
+@media screen and (max-width: 320px)
+    .form
+        width: 268px
+    .input
+        line-height: 2.5rem
+    .error
+        font-size: 13px
+
