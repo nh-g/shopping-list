@@ -25,11 +25,6 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
   }, [list]);
-
-  // By using context API we can move this functionakity to a different file
-  // and even withouth it, we can do the validation outside using a function in a separate file and then calling that funciton and modifying the setter here...
-  // (deleted) const addItem = () => {}
-  // From Giang: done by create item-form-validator.js, add-item.js and modify component AddNewItem.jsx
   
   const removeItem = (id) => {
     const afterRemoveArray = [...list].filter((item) => item.id !== id);
@@ -50,20 +45,21 @@ export default function App() {
     <div className="App">
       <Navigation />
       <h2>EIKA shopping list</h2>
-
-      {list.length === 0 ? (
-        <WelcomeScreen />
-      ) : (
-        <>
-          <SortControl list={list} setList={setList} />
-          <NormalScreen
-            list={list}
-            removeItem={removeItem}
-            completeItem={completeItem}
-          />
-        </>
-      )}
-      <br />
+      <main>
+        {list.length === 0 ? (
+          <WelcomeScreen />
+        ) : (
+          <>
+            <SortControl list={list} setList={setList} />
+            <NormalScreen
+              list={list}
+              removeItem={removeItem}
+              completeItem={completeItem}
+            />
+          </>
+        )}
+        <br />
+      </main>
       <AddNewItem list={list} setList={setList} />
     </div>
   );
