@@ -4,7 +4,7 @@ import {
   sortByString,
   sortByNumberDescending,
   sortByNumberAscending,
-} from "../javaScripts/list-sorter";
+} from "../scripts/list-sorter";
 export default function SortControl({list,setList}) {
 
   const [activeSort, setActiveSort] = useState("");
