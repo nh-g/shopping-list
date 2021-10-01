@@ -10,11 +10,6 @@ td, th
 
 .shopping-item
   box-sizing: border-box
-  // border: solid 2px #f8f9fa
-  // border-bottom: solid 1px #e3e3e3
-  // box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px
-// .shopping-item:last-child
-//   border: none
 
 .price
   font-weight: bold
@@ -38,4 +33,22 @@ td, th
   .name
     max-width: 105px
 
+
+/* Normal state */
+.custom-checkbox input
+  display: none
+
+.custom-checkbox .icon-checkMark 
+  width: 24px
+  height: 24px
+  background-color: $color-yellow-light
+  border-radius: 4px
+
+
+/* Checked state */
+.custom-checkbox .icon-checkMark.checked 
+  background-color: $color-blue
+  background-image: url("../../assets/images/checkmark-white.svg");
+  background-repeat: no-repeat
+  background-position: center
 

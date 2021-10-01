@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="12px" viewBox="0 0 16 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon/eye-closed copy</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Shopping-item-completed" transform="translate(-4.000000, -18.000000)" fill="#FFFFFF">
+            <g id="icon/eye-closed-copy" transform="translate(4.000000, 16.000000)">
+                <path d="M5.43430999,13.6970661 L0.234304916,8.49706103 C-0.0781016388,8.18465448 -0.0781016388,7.67812273 0.234304916,7.36568493 L1.36564977,6.23430882 C1.67805633,5.92187102 2.18461932,5.92187102 2.49702588,6.23430882 L6,9.73724974 L13.5029741,2.23430492 C13.8153807,1.92189836 14.3219437,1.92189836 14.6343502,2.23430492 L15.7656951,3.36568102 C16.0781016,3.67808758 16.0781016,4.18461932 15.7656951,4.49705713 L6.5656861,13.6970974 C6.25324829,14.0095039 5.74671655,14.0095039 5.43430999,13.6970661 L5.43430999,13.6970661 Z" id="Path"></path>
+            </g>
+        </g>
+    </g>
+</svg>
