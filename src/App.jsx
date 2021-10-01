@@ -1,7 +1,7 @@
-//npm packages
+// Npm packages
 import { useState, useEffect } from "react";
 
-//local project files
+// Project files
 import "./styles/styles.sass";
 import Navigation from "./components/Navigation";
 import NormalScreen from "./screens/NormalScreen";
@@ -26,21 +26,6 @@ export default function App() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
   }, [list]);
   
-  const removeItem = (id) => {
-    const afterRemoveArray = [...list].filter((item) => item.id !== id);
-    setList(afterRemoveArray);
-  };
-
-  const completeItem = (id) => {
-    let updatedList = list.map((item) => {
-      if (item.id === id) {
-        item.isComplete = !item.isComplete;
-      }
-      return item;
-    });
-    setList(updatedList);
-  };
-
   return (
     <div className="App">
       <Navigation />
@@ -53,8 +38,7 @@ export default function App() {
             <SortControl list={list} setList={setList} />
             <NormalScreen
               list={list}
-              removeItem={removeItem}
-              completeItem={completeItem}
+              setList ={setList}
             />
           </>
         )}

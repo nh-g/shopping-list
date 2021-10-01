@@ -1,21 +1,34 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ShowAcquiredToggler from "../components/ShowAcquiredToggler";
 import ShoppingList from "../components/ShoppingList";
-import SortControl from "../components/SortControl";
 
-export default function NormalScreen({ list, removeItem, completeItem }) {
+export default function NormalScreen({ list, setList}) {
   const [showCompletedList, setShowCompletedList] = useState(false);
   const toggleShow = () => setShowCompletedList(!showCompletedList);
 
   const inactiveList = list.filter((item) => item.isComplete === true);
   const activeList = list.filter((item) => item.isComplete === false);
 
+  // Methods
+  function editList(editedItem) {
+    const index = list.findIndex((item) => item.id === editedItem.id);
+    const clonedList = [...list];
+
+    clonedList[index] = editedItem;
+    setList(clonedList);
+  }
+
+  function removeItem(id) {
+    const afterRemoveArray = [...list].filter((item) => item.id !== id);
+    setList (afterRemoveArray);
+  }
+
   return (
     <div>
       {/* active items */}
       <ShoppingList
         shoppingListItems={activeList}
-        completeItem={completeItem}
+        editList={editList} 
         removeItem={removeItem}
       />
       {/* acquired items */}
@@ -26,7 +39,7 @@ export default function NormalScreen({ list, removeItem, completeItem }) {
       {showCompletedList && (
         <ShoppingList
           shoppingListItems={inactiveList}
-          completeItem={completeItem}
+          editList={editList} 
           removeItem={removeItem}
         />
       )}

@@ -1,16 +1,11 @@
-import React, { useState, useEffect } from "react";
 import Item from "./Item";
 
-export default function ShoppingList({
-  shoppingListItems,
-  removeItem,
-  completeItem,
-}) {
+export default function ShoppingList({shoppingListItems, editList, removeItem,}) {
   const List = shoppingListItems.map((item) => (
     <Item
       key={item.id}
       listItem={item}
-      completeItem={completeItem}
+      editList={editList}
       removeItem={removeItem}
     />
   ));
