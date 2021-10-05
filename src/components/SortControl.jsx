@@ -5,12 +5,10 @@ import {
   sortByNumberDescending,
   sortByNumberAscending,
 } from "../scripts/list-sorter";
-export default function SortControl({list,setList}) {
-
+export default function SortControl({ list, setList }) {
   const [activeSort, setActiveSort] = useState("");
   const [sortAscending, setSortAscending] = useState(false);
   const toggleSortAscending = () => setSortAscending(!sortAscending);
-
 
   function sortListByName(list, key) {
     const sortedList = sortByString(list, key);
@@ -28,13 +26,13 @@ export default function SortControl({list,setList}) {
     const sortedList = sortByNumberAscending(list, key);
     setActiveSort("price");
     setList(sortedList);
-}
+  }
 
   function sortListByDateDescending(list, key) {
     const sortedList = sortByNumberDescending(list, key);
     setActiveSort("date");
     setList(sortedList);
-    }
+  }
 
   function sortListByDateAscending(list, key) {
     const sortedList = sortByNumberAscending(list, key);
@@ -44,18 +42,18 @@ export default function SortControl({list,setList}) {
 
   return (
     <section className="sort-controls">
-      <img src={SorterImg} alt="Sorter Icon" />
-      <span className="label"> Sort by: </span>
+      {/* <img src={SorterImg} alt="Sorter Icon" /> */}
+      {/* <span className="label"> Sort by: </span> */}
       <span className="box">
         <button
-          className={`sort-toggler ${activeSort === "name" ? "active" : ""}`}
+          className={`button-toggler ${activeSort === "name" ? "active" : ""}`}
           onClick={() => sortListByName(list, "name")}
         >
           Name
         </button>
 
         <button
-          className={`sort-toggler ${activeSort === "price" ? "active" : ""}`}
+          className={`button-toggler ${activeSort === "price" ? "active" : ""}`}
           onClick={() => {
             toggleSortAscending();
             sortAscending
@@ -67,7 +65,7 @@ export default function SortControl({list,setList}) {
         </button>
 
         <button
-          className={`sort-toggler ${activeSort === "date" ? "active" : ""}`}
+          className={`button-toggler ${activeSort === "date" ? "active" : ""}`}
           onClick={() => {
             toggleSortAscending();
             sortAscending

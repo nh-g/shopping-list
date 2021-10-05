@@ -1,4 +1,8 @@
+// NPM packages
 import { useState } from "react";
+
+// Project files
+import SortControl from "../components/SortControl";
 import ShowAcquiredToggler from "../components/ShowAcquiredToggler";
 import ShoppingList from "../components/ShoppingList";
 
@@ -25,24 +29,31 @@ export default function NormalScreen({ list, setList}) {
 
   return (
     <div>
-      {/* active items */}
-      <ShoppingList
-        shoppingListItems={activeList}
-        editList={editList} 
-        removeItem={removeItem}
-      />
-      {/* acquired items */}
-      <ShowAcquiredToggler
-        showCompleted={showCompletedList}
-        toggleShow={toggleShow}
-      />
-      {showCompletedList && (
+      <div className="toolbar">
+        <ShowAcquiredToggler
+          showCompleted={showCompletedList}
+          toggleShow={toggleShow}
+        />
+        <SortControl list={list} setList={setList} />
+      </div>
+
+      {showCompletedList ? (
+        /* acquired items */
         <ShoppingList
           shoppingListItems={inactiveList}
-          editList={editList} 
+          editList={editList}
           removeItem={removeItem}
         />
-      )}
+      ) : 
+        /* active items */
+        (
+          <ShoppingList
+            shoppingListItems={activeList}
+            editList={editList}
+            removeItem={removeItem}
+          />
+        )
+      }
     </div>
   );
 }

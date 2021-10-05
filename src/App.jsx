@@ -35,7 +35,6 @@ export default function App() {
           <WelcomeScreen />
         ) : (
           <>
-            <SortControl list={list} setList={setList} />
             <NormalScreen
               list={list}
               setList ={setList}
