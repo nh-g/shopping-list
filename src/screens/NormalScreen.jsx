@@ -1,4 +1,4 @@
-// NPM packages
+// NPM Packages
 import { useState } from "react";
 
 // Project files
@@ -6,7 +6,7 @@ import SortControl from "../components/SortControl";
 import ShowAcquiredToggler from "../components/ShowAcquiredToggler";
 import ShoppingList from "../components/ShoppingList";
 
-export default function NormalScreen({ list, setList}) {
+export default function NormalScreen({ list, setList }) {
   const [showCompletedList, setShowCompletedList] = useState(false);
   const toggleShow = () => setShowCompletedList(!showCompletedList);
 
@@ -24,7 +24,7 @@ export default function NormalScreen({ list, setList}) {
 
   function removeItem(id) {
     const afterRemoveArray = [...list].filter((item) => item.id !== id);
-    setList (afterRemoveArray);
+    setList(afterRemoveArray);
   }
 
   return (
@@ -44,16 +44,14 @@ export default function NormalScreen({ list, setList}) {
           editList={editList}
           removeItem={removeItem}
         />
-      ) : 
+      ) : (
         /* active items */
-        (
-          <ShoppingList
-            shoppingListItems={activeList}
-            editList={editList}
-            removeItem={removeItem}
-          />
-        )
-      }
+        <ShoppingList
+          shoppingListItems={activeList}
+          editList={editList}
+          removeItem={removeItem}
+        />
+      )}
     </div>
   );
 }

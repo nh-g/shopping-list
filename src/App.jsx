@@ -1,4 +1,4 @@
-// Npm packages
+// NPM Packages
 import { useState, useEffect } from "react";
 
 // Project files
@@ -25,7 +25,7 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
   }, [list]);
-  
+
   return (
     <div className="App">
       <Navigation />
@@ -35,10 +35,7 @@ export default function App() {
           <WelcomeScreen />
         ) : (
           <>
-            <NormalScreen
-              list={list}
-              setList ={setList}
-            />
+            <NormalScreen list={list} setList={setList} />
           </>
         )}
         <br />
