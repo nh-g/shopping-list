@@ -12,7 +12,7 @@ export default function ShowAcquiredToggler({ showCompleted, toggleShow }) {
       onClick={toggleShow}
     >
       <img src={openEye} alt="" className="eye icon to open and close" />
-      <span>{showCompleted ? "Done" : "Pending"} </span>
+      <span>{showCompleted ? "Pending" : "Done"} </span>
     </button>
   );
 }
