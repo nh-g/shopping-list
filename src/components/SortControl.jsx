@@ -4,7 +4,7 @@ import {
   sortByString,
   sortByNumberDescending,
   sortByNumberAscending,
-} from "../javaScripts/list-sorter";
+} from "../scripts/list-sorter";
 export default function SortControl({list,setList}) {
 
   const [activeSort, setActiveSort] = useState("");
@@ -44,7 +44,7 @@ export default function SortControl({list,setList}) {
 
   return (
     <section className="sort-controls">
-      <img src={SorterImg} alt="Sorter Icon"/>
+      <img src={SorterImg} alt="Sorter Icon" />
       <span className="label"> Sort by: </span>
       <span className="box">
         <button
@@ -63,7 +63,7 @@ export default function SortControl({list,setList}) {
               : sortListByPriceAscending(list, "price");
           }}
         >
-          <span>{sortAscending ? "⬇" : "⬆"}Price</span>
+          <span>{sortAscending ? "▼" : "▲"}Price</span>
         </button>
 
         <button
@@ -75,7 +75,7 @@ export default function SortControl({list,setList}) {
               : sortListByDateAscending(list, "id");
           }}
         >
-          <span>{sortAscending ? "⬇" : "⬆"}Date</span>
+          <span>{sortAscending ? "▼" : "▲"}Date</span>
         </button>
       </span>
     </section>
