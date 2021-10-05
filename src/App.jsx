@@ -29,12 +29,12 @@ export default function App() {
   return (
     <div className="App">
       <Navigation />
-      <h2>EIKA shopping list</h2>
       <main>
         {list.length === 0 ? (
           <WelcomeScreen />
         ) : (
           <>
+            <h2>EIKA shopping list</h2>
             <NormalScreen list={list} setList={setList} />
           </>
         )}
