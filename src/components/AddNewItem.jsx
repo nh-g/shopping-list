@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 import ItemForm from "./ItemForm";
-import {validateAll,validate} from "../javaScripts/item-form-validator";
-import { requestNewItem } from "../javaScripts/add-item";
+import {validateAll,validate} from "../scripts/item-form-validator";
+import { requestNewItem } from "../scripts/add-item";
 export default function AddNewItem({ list, setList }) {
   const initialInput = {
     productName: "",
