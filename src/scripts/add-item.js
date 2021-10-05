@@ -5,6 +5,7 @@ export const requestNewItem = (values) => {
     price: values.price,
     quantity: values.quantity,
     isComplete: false,
+    imageURL: "",
   };
 
   return newItem;

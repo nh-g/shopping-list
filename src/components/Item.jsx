@@ -1,10 +1,13 @@
-// there are unused imports
+// NPM packages
 import { RiDeleteBinLine } from "react-icons/ri";
+
+// Project files
 import Checkbox from "./Checkbox";
+import ImageChooser from "./ImageChooser";
 
 export default function Item({listItem, editList, removeItem}) {
   // Constants
-  const { id, productName, price, isComplete, quantity } = listItem; 
+  const { id, productName, price, isComplete, quantity, imageURL } = listItem; 
 
   // Methods
   function editItem(key, editedValue) {
@@ -27,6 +30,8 @@ export default function Item({listItem, editList, removeItem}) {
         {quantity ? " pc" : ""}
       </td>
       <td className="price">{price}:-</td>
+      <td>      
+        <ImageChooser imageURL={imageURL} editItem={editItem} /></td>
       <td>
         <RiDeleteBinLine
           onClick={() => removeItem(id)}

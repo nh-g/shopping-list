@@ -1,5 +1,6 @@
-
-import { initializeApp } from "firebase/app";
+// NPM Packages
+import firebase from "firebase/compat/app";
+import "firebase/compat/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAtFt138P_XTsvPduV1lCM2SDJyex5HWq4",
@@ -10,4 +11,8 @@ const firebaseConfig = {
   appId: "1:415217440362:web:72553d06a1c4b9ab949c13",
 };
 
-initializeApp(firebaseConfig);
+// Methods
+firebase.initializeApp(firebaseConfig);
+
+// Export to make it visible to React
+export default firebase;
