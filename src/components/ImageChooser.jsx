@@ -8,7 +8,7 @@ import uploadFileToFirebase from "../scripts/upload-image/uploadFileToFilebase";
 
 export default function ImageChooser({imageURL, editItem}) {
     // Constants
-    const Image = imageURL === undefined ? Placeholder : imageURL;
+    const Image = imageURL === "" ? Placeholder : imageURL;
     console.log("PlaceHolder", Placeholder);
 
     // Methods
