@@ -29,6 +29,7 @@ export default function NormalScreen({ list, setList }) {
 
   return (
     <div>
+      <h2>EIKA shopping list</h2>
       <div className="toolbar">
         <ShowAcquiredToggler
           showCompleted={showCompletedList}
