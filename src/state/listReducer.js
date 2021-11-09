@@ -13,6 +13,8 @@ export default function listReducer(state, action) {
 
 function addItem(state, action) {
   const { item } = action;
+  console.log("listReducer State", state)
+  console.log("listReducer Action", action);
 
   if (item !== null) return [...state, item];
   return state;

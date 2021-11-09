@@ -1,15 +1,18 @@
+// NPM Packages
 import React, { useState } from "react";
 
+// Project files
+import { useList } from "../state/ListProvider";
 import ItemForm from "./ItemForm";
 import {validateAll,validate} from "../scripts/item-form-validator";
 import { requestNewItem } from "../scripts/add-item";
-export default function AddNewItem({ list, setList }) {
+export default function AddNewItem() {
   const initialInput = {
     productName: "",
     price: "",
     quantity: "",
   };
-
+  const {dispatch } = useList();
   const [openForm, setOpenForm] = useState(false);
   const [values, setValues] = useState(initialInput);
   const [errors, setErrors] = useState({});
@@ -55,7 +58,7 @@ export default function AddNewItem({ list, setList }) {
     e.preventDefault();
 
     const newItem = requestNewItem(values);
-
+    console.log("ADD", newItem);
     setErrors(formValidation.errors);
     setTouched(formValidation.touched);
 
@@ -65,7 +68,8 @@ export default function AddNewItem({ list, setList }) {
         Object.values(values).length && //all fields were touched
       Object.values(formValidation.touched).every((t) => t === true) // every touched field is true
     ) {
-      setList([...list, newItem]);
+      dispatch({ type: "addItem", newItem });
+      console.log("dispatch ADD", dispatch({ type: "addItem", newItem }));
       toggleAddingItem();
       setValues(initialInput);
     }

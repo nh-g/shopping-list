@@ -1,11 +1,18 @@
+// NPM Packages
 import { useState } from "react";
-import SorterImg from "../assets/images/sorter.svg";
+
+// Project files
+import { useList } from "../state/ListProvider";
 import {
   sortByString,
   sortByNumberDescending,
   sortByNumberAscending,
 } from "../scripts/list-sorter";
-export default function SortControl({ list, setList }) {
+
+export default function SortControl() {
+  // Global state
+  const { list, dispatch } = useList();
+
   const [activeSort, setActiveSort] = useState("");
   const [sortAscending, setSortAscending] = useState(false);
   const toggleSortAscending = () => setSortAscending(!sortAscending);
@@ -13,31 +20,31 @@ export default function SortControl({ list, setList }) {
   function sortListByName(list, key) {
     const sortedList = sortByString(list, key);
     setActiveSort("name");
-    setList(sortedList);
+    dispatch({ type: "replaceList", editedList: sortedList });
   }
 
   function sortListByPriceDescending(list, key) {
     const sortedList = sortByNumberDescending(list, key);
     setActiveSort("price");
-    setList(sortedList);
+    dispatch({ type: "replaceList", editedList: sortedList });
   }
 
   function sortListByPriceAscending(list, key) {
     const sortedList = sortByNumberAscending(list, key);
     setActiveSort("price");
-    setList(sortedList);
+    dispatch({ type: "replaceList", editedList: sortedList });
   }
 
   function sortListByDateDescending(list, key) {
     const sortedList = sortByNumberDescending(list, key);
     setActiveSort("date");
-    setList(sortedList);
+    dispatch({ type: "replaceList", editedList: sortedList });
   }
 
   function sortListByDateAscending(list, key) {
     const sortedList = sortByNumberAscending(list, key);
     setActiveSort("date");
-    setList(sortedList);
+    dispatch({ type: "replaceList", editedList: sortedList });
   }
 
   return (

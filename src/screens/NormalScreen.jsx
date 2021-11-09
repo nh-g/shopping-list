@@ -2,30 +2,28 @@
 import { useState } from "react";
 
 // Project files
+import { useList } from "../state/ListProvider";
 import SortControl from "../components/SortControl";
 import ShowAcquiredToggler from "../components/ShowAcquiredToggler";
 import ShoppingList from "../components/ShoppingList";
 
-export default function NormalScreen({ list, setList }) {
+export default function NormalScreen() {
+  // Global state
+  const { list } = useList();
+
+  // Local state
   const [showCompletedList, setShowCompletedList] = useState(false);
   const toggleShow = () => setShowCompletedList(!showCompletedList);
 
+  // Constants
   const inactiveList = list.filter((item) => item.isComplete === true);
   const activeList = list.filter((item) => item.isComplete === false);
 
   // Methods
-  function editList(editedItem) {
-    const index = list.findIndex((item) => item.id === editedItem.id);
-    const clonedList = [...list];
-
-    clonedList[index] = editedItem;
-    setList(clonedList);
-  }
-
-  function removeItem(id) {
-    const afterRemoveArray = [...list].filter((item) => item.id !== id);
-    setList(afterRemoveArray);
-  }
+  // function removeItem(id) {
+  //   const afterRemoveArray = [...list].filter((item) => item.id !== id);
+  //   setList(afterRemoveArray);
+  // }
 
   return (
     <div>
@@ -35,24 +33,13 @@ export default function NormalScreen({ list, setList }) {
           showCompleted={showCompletedList}
           toggleShow={toggleShow}
         />
-        <SortControl list={list} setList={setList} />
+        <SortControl/>
       </div>
 
-      {showCompletedList ? (
-        /* acquired items */
-        <ShoppingList
-          shoppingListItems={inactiveList}
-          editList={editList}
-          removeItem={removeItem}
-        />
-      ) : (
-        /* active items */
-        <ShoppingList
-          shoppingListItems={activeList}
-          editList={editList}
-          removeItem={removeItem}
-        />
-      )}
+      {showCompletedList ? 
+        <ShoppingList Items={inactiveList}/>
+      : <ShoppingList Items={activeList}/>
+      }
     </div>
   );
 }
