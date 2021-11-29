@@ -15,6 +15,6 @@ These are the instructions to run the project:
 
 ## 3. Further thoughts
 
-Currently I use no other state management libraries in order to practice understand of React passing props philosophy.
-For the future of this project, I plan to create 2 branches to try Recoils and useContextAPI/useReducer
+I used no other state management libraries in order to practice understand of React passing props philosophy.
+There are 2 other branches to try Recoils and useContextAPI/useReducer
 
