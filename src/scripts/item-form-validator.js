@@ -26,8 +26,6 @@ const validateField = {
   price: (price) => numberValidation("Price", price),
 };
 
-console.log("VALIDATORS", validateField);
-
 export const validateAll = (values) => {
   return Object.keys(values).reduce(
     (acc, key) => {

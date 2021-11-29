@@ -7,8 +7,6 @@ export default function FormDataField({
   placeholder,
   label,
 }) {
-  // console.log("DF ERRORS", errors)
-  // console.log("DF TOUCHED", touched);
   return (
     <div className="form-group">
       <label htmlFor={`${fieldName} input`}>{label}</label>

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import SorterImg from "../assets/images/sorter.svg";
 import {
   sortByString,
   sortByNumberDescending,
@@ -42,8 +41,6 @@ export default function SortControl({ list, setList }) {
 
   return (
     <section className="sort-controls">
-      {/* <img src={SorterImg} alt="Sorter Icon" /> */}
-      {/* <span className="label"> Sort by: </span> */}
       <span className="box">
         <button
           className={`button-toggler ${activeSort === "name" ? "active" : ""}`}
