@@ -2,7 +2,7 @@ export default function Checkbox({ checked, onChange }) {
   return (
     <label className="custom-checkbox">
       <input
-        data-test-id="checkbox"
+        data-testid="checkbox"
         onChange={onChange}
         type="checkbox"
         checked={checked}

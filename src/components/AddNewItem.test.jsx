@@ -1,11 +1,11 @@
 // NPM packages
 import { render, screen, fireEvent } from "@testing-library/react";
-import user from '@testing-library/user-event';
+import user from "@testing-library/user-event";
 
 // Project files
 import AddNewItem from "./AddNewItem";
-import {requestNewItem} from "../scripts/add-item";
-jest.mock('../scripts/add-item.js')
+import { requestNewItem } from "../scripts/add-item";
+jest.mock("../scripts/add-item.js");
 
 test("the AddItem form should display when '+ Add a new item' button be clicked", () => {
   // Arrange
@@ -50,4 +50,3 @@ test("should call the requestNewItem function when click Create button", () => {
   // Assert
   expect(requestNewItem).toHaveBeenCalledTimes(1);
 });
-
